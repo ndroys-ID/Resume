@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CV Sandrian — IT Infrastructure dalam Bahasa Indonesia.">
+  <!-- Judul menjadi saran nama berkas saat memilih Simpan sebagai PDF. -->
+  <title>CV_Sandrian</title>
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="cv.css">
+  <script src="cv.js" defer></script>
+</head>
+<body>
+  <!-- Kontrol layar disembunyikan saat dicetak. Ctrl+P tetap dapat digunakan tanpa JS. -->
+  <aside class="print-toolbar" aria-label="Pengaturan cetak CV">
+    <div class="toolbar-actions">
+      <a href="../../index.html">← Kembali ke portfolio</a>
+      <button id="print-cv" type="button">Cetak / Simpan sebagai PDF</button>
+    </div>
+    <noscript><p>JavaScript tidak aktif. Tekan Ctrl+P untuk mencetak atau menyimpan CV sebagai PDF.</p></noscript>
+  </aside>
+
+  <!-- CV satu kolom: seluruh informasi berupa teks yang dapat dipilih dan disalin. -->
+  <main class="cv-document">
+    <header class="cv-header">
+      <div>
+        <!-- Nama yang tersedia di proyek; jangan menambahkan nama belakang tanpa konfirmasi. -->
+        <h1>Sandrian</h1>
+        <p class="role">IT Infrastructure</p>
+        <address>
+          <p>Email: <a href="mailto:ndroys@gmail.com">ndroys@gmail.com</a></p>
+          <p>Telepon / WhatsApp: <a href="https://wa.me/62895412924097">+62895412924097</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/sandrian/">linkedin.com/in/sandrian/</a></p>
+        </address>
+      </div>
+      <!-- Foto asli dipakai tanpa regenerasi wajah. Teks CV tetap berdiri sendiri. -->
+      <img src="../images/Sandrian.jpg" alt="Foto Sandrian" width="2176" height="2153" class="cv-photo">
+    </header>
+
+    <section aria-labelledby="summary-title">
+      <h2 id="summary-title">Ringkasan Profesional</h2>
+      <p>Profesional IT Infrastructure dengan fokus pada pengelolaan jaringan, server, pemantauan infrastruktur, dan operasional IT. Menangani instalasi, konfigurasi, pemeliharaan, serta penelusuran gangguan untuk mendukung ketersediaan layanan, kebutuhan pengguna, dan sistem komunikasi berbasis IP.</p>
+    </section>
+
+    <!-- Pengalaman ditulis sesuai data portfolio, terbaru terlebih dahulu. -->
+    <section aria-labelledby="experience-title">
+      <h2 id="experience-title">Pengalaman Kerja</h2>
+      <article class="job">
+        <h3>IT Infrastructure</h3>
+        <p class="organization">PT IVONESIA SOLUSI DATA</p>
+        <p class="period">Februari 2018 — Sekarang</p>
+        <ul>
+          <li>Melakukan instalasi, konfigurasi, dan perawatan perangkat keras serta perangkat lunak komputer.</li>
+          <li>Menangani instalasi dan penelusuran gangguan jaringan LAN, WAN, serta Wi-Fi untuk mendukung operasional.</li>
+          <li>Memastikan jaringan, Wi-Fi, server, dan komputer pengguna berjalan optimal serta sesuai standar.</li>
+          <li>Mengelola dan mengonfigurasi IPPBX untuk komunikasi internal dan eksternal.</li>
+        </ul>
+      </article>
+      <article class="job">
+        <h3>IT Support</h3>
+        <p class="organization">PT DATA BINA SOLUSINDO</p>
+        <p class="period">Mei 2011 — Februari 2018</p>
+        <ul>
+          <li>Melakukan instalasi perangkat lunak, perangkat keras komputer, dan jaringan.</li>
+          <li>Menangani pengadaan serta pembelian barang untuk kebutuhan divisi IT.</li>
+          <li>Memastikan komputer pengguna berfungsi normal untuk mendukung pekerjaan sehari-hari.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Keahlian berasal dari data portfolio, tanpa persentase atau klaim sertifikasi. -->
+    <section aria-labelledby="skills-title">
+      <h2 id="skills-title">Keahlian Teknis</h2>
+      <ul class="skill-list">
+        <li><strong>Infrastruktur Jaringan:</strong> MikroTik RouterOS, routing, firewall, Multi-WAN, DHCP, DNS, VPN, dan administrasi jaringan nirkabel.</li>
+        <li><strong>Pemantauan Infrastruktur:</strong> Zabbix, Uptime Kuma, pemantauan ketersediaan layanan, latensi, peringatan, dan insiden.</li>
+        <li><strong>Administrasi Server:</strong> Linux, Windows, Rocky Linux, Ubuntu Server, SSH, dan pengelolaan layanan.</li>
+        <li><strong>Virtualisasi dan Pencadangan:</strong> Proxmox VE, administrasi mesin virtual, pencadangan, dan pemulihan.</li>
+        <li><strong>Infrastruktur VoIP:</strong> Asterisk, Issabel PBX, penelusuran gangguan SIP trunk, pengelolaan IVR dan antrean panggilan, serta pemeriksaan kualitas suara.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="education-title">
+      <h2 id="education-title">Pendidikan</h2>
+      <p class="organization">Bina Sarana Informatika</p>
+      <p>D3 Manajemen Informatika | 2014 — 2017</p>
+    </section>
+    <!-- Sertifikasi dan pencapaian tidak dicantumkan karena belum tersedia. -->
+  </main>
+</body>
+</html>

@@ -1,0 +1,130 @@
+/* Warna komponen memakai peran yang sama pada kedua tema. */
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --header: #fafbf9;
+  --profile: #e9eeeb;
+  --subtle: #edf2ed;
+  --visual: #e6ece8;
+  --visual-blue: #e9eef0;
+  --visual-ink: #48616e;
+  --button-ink: #ffffff;
+  --button-hover: #34566d;
+  --contact: #203c53;
+  --contact-ink: #f5f7f7;
+  --contact-muted: #c4d0d7;
+  --control-border: #748a9b;
+  --focus: #527b96;
+  --badge: #e1e9e3;
+  --badge-ink: #4b6b5b;
+  --overlay: #152d40aa;
+}
+/* DARK_PALETTE */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #222930;
+  --tint: #272f38;
+  --surface: #2d3742;
+  --header: #222930;
+  --ink: #edf1f5;
+  --muted: #becad5;
+  --navy: #a5c8ec;
+  --accent: #a5c8ec;
+  --line: #526171;
+  --profile: #303c46;
+  --subtle: #344250;
+  --visual: #303c46;
+  --visual-blue: #303b49;
+  --visual-ink: #c0d5e8;
+  --button-ink: #22313f;
+  --button-hover: #bdd8f2;
+  --contact: #293747;
+  --contact-ink: #edf1f5;
+  --contact-muted: #c4d0dc;
+  --control-border: #8babc9;
+  --focus: #b2d5f5;
+  --badge: #354b4d;
+  --badge-ink: #d5e9e2;
+  --overlay: #16202bcc;
+}
+/* Preferensi sistem tetap dihormati jika JavaScript tidak berjalan. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+  color-scheme: dark;
+  --paper: #222930;
+  --tint: #272f38;
+  --surface: #2d3742;
+  --header: #222930;
+  --ink: #edf1f5;
+  --muted: #becad5;
+  --navy: #a5c8ec;
+  --accent: #a5c8ec;
+  --line: #526171;
+  --profile: #303c46;
+  --subtle: #344250;
+  --visual: #303c46;
+  --visual-blue: #303b49;
+  --visual-ink: #c0d5e8;
+  --button-ink: #22313f;
+  --button-hover: #bdd8f2;
+  --contact: #293747;
+  --contact-ink: #edf1f5;
+  --contact-muted: #c4d0dc;
+  --control-border: #8babc9;
+  --focus: #b2d5f5;
+  --badge: #354b4d;
+  --badge-ink: #d5e9e2;
+  --overlay: #16202bcc;
+
+  }
+}
+
+/* Komponen: gunakan token, bukan filter/inversi pada halaman atau foto. */
+.site-header { background: var(--header); }
+.skill-card { background: var(--surface); }
+.button,.skip-link { color: var(--button-ink); }
+.button:hover { background: var(--button-hover); }
+.brand { background: #203c53; color: #fafbf9; }
+.profile-panel { background: var(--profile); border-color: var(--line); }
+.profile-topline,.photo-note,.focus-strip p,.focus-strip i { color: var(--muted); }
+.profile-caption,.experience-body,.education-card,.inline-facts span { border-color: var(--line); }
+.tags span { background: var(--surface); color: var(--muted); }
+.current-label { background: var(--badge); color: var(--badge-ink); }
+.project-visual { background: var(--visual); color: var(--visual-ink); }
+.monitoring-art,.voice-art { background: var(--visual-blue); }
+.network-art span,.network-art b,.voice-art span,.voice-art b,.virtualization-art span {
+  color: var(--visual-ink); background: var(--subtle); border-color: var(--line);
+}
+.network-art i { background: var(--line); }
+.virtualization-art b { border-color: var(--line); }
+.monitoring-art path { stroke: var(--accent); }
+.status-dot { background: var(--accent); }
+.contact-section { background: var(--contact); color: var(--contact-ink); }
+.contact-intro .eyebrow,.contact-intro>p:last-child,.contact-links small,.cv-row p { color: var(--contact-muted); }
+.contact-intro h2 span { color: var(--contact-muted); }
+.contact-links a { border-color: var(--control-border); }
+.button-light { background: transparent; color: var(--contact-ink); border-color: var(--control-border); }
+.button-light:hover { background: var(--contact-ink); color: var(--contact); }
+dialog { background: var(--paper); color: var(--ink); }
+dialog::backdrop { background: var(--overlay); }
+a:focus-visible,button:focus-visible { outline-color: var(--focus); }
+.contact-section a:focus-visible { outline-color: #b2d5f5; }
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; flex-shrink: 0; padding: 10px;
+  border: 1px solid var(--control-border); border-radius: 6px;
+  background: var(--surface); color: var(--navy);
+}
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:hover { background: var(--tint); }
+.theme-toggle svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.theme-sun { display: none; }
+:root[data-theme="dark"] .theme-sun { display: block; }
+:root[data-theme="dark"] .theme-moon { display: none; }
+/* Jarak navigasi disesuaikan agar kontrol tema tetap muat. */
+@media (min-width: 961px) { .nav-wrap { gap: 18px; } nav { gap: 18px; } }
+@media (max-width: 960px) { .nav-wrap { gap: 12px; } }
+@media (max-width: 400px) {
+  .nav-wrap { gap: 8px; }
+  .button-small { gap: 8px; padding-inline: 9px; font-size: 12px; }
+}
