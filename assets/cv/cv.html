@@ -5,16 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CV Sandrian — IT Infrastructure dalam Bahasa Indonesia.">
   <!-- Judul menjadi saran nama berkas saat memilih Simpan sebagai PDF. -->
-  <title>CV_Sandrian</title>
+  <title>CV_Sandrian_ID</title>
   <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="cv.css">
+  <link rel="stylesheet" href="../css/language.css">
+  <script src="../js/translations.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
   <script src="cv.js" defer></script>
 </head>
-<body>
+<body data-page="cv">
   <!-- Kontrol layar disembunyikan saat dicetak. Ctrl+P tetap dapat digunakan tanpa JS. -->
   <aside class="print-toolbar" aria-label="Pengaturan cetak CV">
     <div class="toolbar-actions">
-      <a href="../../index.html">← Kembali ke portfolio</a>
+      <a data-portfolio-link href="../../index.html?lang=id">← Kembali ke portfolio</a>
+      <div class="language-switch" data-language-switch role="group" aria-label="Pilih bahasa" hidden><button type="button" class="language-option" data-language="id" lang="id" aria-label="Bahasa Indonesia" title="Bahasa Indonesia" aria-pressed="true">ID</button><button type="button" class="language-option" data-language="en" lang="en" aria-label="English" title="English" aria-pressed="false">EN</button></div>
       <button id="print-cv" type="button">Cetak / Simpan sebagai PDF</button>
     </div>
     <noscript><p>JavaScript tidak aktif. Tekan Ctrl+P untuk mencetak atau menyimpan CV sebagai PDF.</p></noscript>
@@ -29,7 +33,7 @@
         <p class="role">IT Infrastructure</p>
         <address>
           <p>Email: <a href="mailto:ndroys@gmail.com">ndroys@gmail.com</a></p>
-          <p>Telepon / WhatsApp: <a href="https://wa.me/62895412924097">+62895412924097</a></p>
+          <p>Telepon / WhatsApp: <a href="https://wa.me/62895412924097">+62 895-4129-24097</a></p>
           <p>LinkedIn: <a href="https://www.linkedin.com/in/sandrian/">linkedin.com/in/sandrian/</a></p>
         </address>
       </div>
@@ -50,8 +54,8 @@
         <p class="organization">PT IVONESIA SOLUSI DATA</p>
         <p class="period">Februari 2018 — Sekarang</p>
         <ul>
-          <li>Melakukan instalasi, konfigurasi, dan perawatan perangkat keras serta perangkat lunak komputer.</li>
-          <li>Menangani instalasi dan penelusuran gangguan jaringan LAN, WAN, serta Wi-Fi untuk mendukung operasional.</li>
+          <li>Melakukan instalasi dan penelusuran gangguan jaringan LAN, WAN, serta Wi-Fi untuk mendukung operasional.</li>
+          <li>Melakukan instalasi, konfigurasi, dan perawatan komputer, baik perangkat lunak maupun perangkat keras.</li>
           <li>Memastikan jaringan, Wi-Fi, server, dan komputer pengguna berjalan optimal serta sesuai standar.</li>
           <li>Mengelola dan mengonfigurasi IPPBX untuk komunikasi internal dan eksternal.</li>
         </ul>
@@ -61,9 +65,9 @@
         <p class="organization">PT DATA BINA SOLUSINDO</p>
         <p class="period">Mei 2011 — Februari 2018</p>
         <ul>
-          <li>Melakukan instalasi perangkat lunak, perangkat keras komputer, dan jaringan.</li>
-          <li>Menangani pengadaan serta pembelian barang untuk kebutuhan divisi IT.</li>
-          <li>Memastikan komputer pengguna berfungsi normal untuk mendukung pekerjaan sehari-hari.</li>
+          <li>Melakukan instalasi dan perawatan perangkat lunak, perangkat keras komputer, serta jaringan untuk pengguna kantor.</li>
+          <li>Menangani pengadaan dan pembelian perangkat untuk kebutuhan divisi IT.</li>
+          <li>Memberikan dukungan teknis harian agar komputer pengguna berfungsi normal dan pekerjaan berjalan lancar.</li>
         </ul>
       </article>
     </section>
@@ -87,5 +91,6 @@
     </section>
     <!-- Sertifikasi dan pencapaian tidak dicantumkan karena belum tersedia. -->
   </main>
+  <p id="language-status" class="sr-only" role="status" aria-live="polite"></p>
 </body>
 </html>

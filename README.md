@@ -1,5 +1,11 @@
 # Sandrian — Online Resume
 
+## Bahasa Indonesia dan Inggris
+
+Gunakan pemilih ID/EN di navbar untuk mengganti seluruh konten dan modal. Default adalah Indonesia; preferensi disimpan terpisah dari tema dengan kunci `sandrian-language`. Kamus ada di `assets/js/translations.js`, pengendali di `assets/js/i18n.js`. Teks Indonesia dalam HTML menjadi fallback tanpa JavaScript.
+
+Tautan Lihat CV membawa parameter `?lang=id` atau `?lang=en`. Bahasa juga dapat diganti pada halaman CV sebelum mencetak. Pilih Simpan sebagai PDF dan gunakan nama `CV_Sandrian_ID.pdf` atau `CV_Sandrian_EN.pdf`. Judul halaman menyarankan nama berkas; nama akhir ditentukan melalui dialog simpan browser. Cetak tetap A4 dengan tema terang, tanpa CDN, backend, atau koneksi internet.
+
 Website statis HTML, CSS, dan JavaScript tanpa dependensi atau proses build. Konten menggunakan data yang diberikan. Kontak dan detail proyek sudah diisi; CV A4 lokal tersedia melalui tombol Download CV. Website belum dipublikasikan dan tidak perlu hosting untuk menyimpan CV sebagai PDF.
 
 ## Menjalankan di Windows

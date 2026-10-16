@@ -1,3 +1,5 @@
+/* Terjemahan dinamis mengikuti kamus terpusat; Indonesia menjadi fallback. */
+const t = text => window.I18N ? window.I18N.t(text) : text;
 /* 01. KONFIGURASI PROFIL — isi data asli Anda di sini.
    Biarkan kosong bila belum tersedia. cvPage memakai path relatif agar dapat dibuka langsung secara lokal.
    Contoh: email: 'nama@example.com', whatsapp: '6281234567890'. */
@@ -8,55 +10,47 @@ const CONFIG = {
   cvPage: 'assets/cv/cv.html', // Halaman CV lokal, lalu simpan PDF melalui browser.
 };
 
-/* 02. DETAIL PROYEK — title, description, dan technology tetap dipertahankan.
-   sections berisi judul dan isi setiap bagian. Konfigurasi yang belum diketahui
-   dijelaskan secara bersyarat, tanpa mengklaim implementasi atau hasil pengujian. */
+/* 02. DETAIL AREA KERJA — pola per bagian: Konteks → Yang Saya Kerjakan → Dampak.
+   Sesuaikan isinya dengan pekerjaan nyata; hindari angka yang belum terverifikasi. */
 const PROJECTS = {
   network: {
     title: 'Pengelolaan Infrastruktur Jaringan',
-    description: 'Pengelolaan dan pemeliharaan infrastruktur jaringan untuk mendukung konektivitas serta kebutuhan operasional IT.',
-    technology: 'MikroTik RouterOS, routing, firewall, LAN/WAN.',
+    description: 'Pengelolaan dan pemeliharaan LAN, WAN, serta Wi-Fi untuk mendukung konektivitas operasional.',
+    technology: 'MikroTik RouterOS, routing, NAT, firewall, DHCP/DNS; VPN dan multi-WAN sesuai penerapan.',
     sections: [
-      { title: 'Lingkup Pekerjaan', content: 'Mencakup pengelolaan LAN/WAN, routing, DHCP, DNS, NAT, firewall, serta penelusuran gangguan konektivitas sesuai kebutuhan jaringan. Pengelolaan multi-WAN termasuk dalam lingkup apabila digunakan pada lingkungan terkait.' },
-      { title: 'Pendekatan Teknis', content: 'Pemeriksaan dilakukan pada konfigurasi router, tabel routing, aturan firewall, dan konektivitas antarjaringan. Pengujian koneksi digunakan untuk menelusuri sumber gangguan sebelum penyesuaian konfigurasi dilakukan sesuai kebutuhan.' },
-      { title: 'Verifikasi', content: 'Verifikasi mencakup pemeriksaan keterjangkauan gateway, kesesuaian jalur routing, resolusi DNS, konektivitas antarjaringan, serta akses ke layanan yang dibutuhkan. Hasil pemeriksaan menjadi dasar penentuan tindak lanjut.' },
-      { title: 'Hasil dan Manfaat', content: 'Pendekatan ini membantu menjaga keteraturan konfigurasi jaringan dan memudahkan penelusuran gangguan konektivitas. Manfaat operasional yang dituju adalah akses jaringan yang mendukung pekerjaan pengguna; tidak ada klaim peningkatan kinerja atau hasil pengujian tertentu.' },
+      { title: 'Konteks', content: 'Konektivitas jaringan mendukung akses pengguna ke layanan dan kebutuhan operasional sehari-hari.' },
+      { title: 'Lingkup Teknis', content: 'Pemeriksaan konfigurasi router, routing, NAT, firewall, DHCP/DNS, serta penelusuran gangguan dari gateway hingga perangkat pengguna. VPN dan failover multi-WAN diperiksa apabila diterapkan; keberhasilan perpindahan jalur perlu diverifikasi melalui pengujian.' },
+      { title: 'Manfaat Operasional', content: 'Pengelolaan konfigurasi dan pengujian koneksi membantu menjaga keteraturan jaringan serta mendukung penelusuran gangguan. Tidak diasumsikan bahwa koneksi tetap tersedia saat gangguan ISP tanpa hasil pengujian.' },
     ],
   },
   monitoring: {
     title: 'Pemantauan Infrastruktur IT',
-    description: 'Pemantauan ketersediaan server, perangkat jaringan, dan layanan untuk membantu mengenali kondisi operasional serta gangguan yang memerlukan pemeriksaan.',
-    technology: 'Zabbix dan Uptime Kuma; SNMP atau ICMP sesuai dukungan perangkat dan kebutuhan pemeriksaan.',
+    description: 'Pemantauan kondisi server, perangkat jaringan, dan layanan sebagai dasar pemeriksaan gangguan.',
+    technology: 'Zabbix, Uptime Kuma; SNMP, ICMP, dan notifikasi sesuai konfigurasi.',
     sections: [
-      { title: 'Lingkup Pekerjaan', content: 'Mencakup pemantauan perangkat atau host, ketersediaan layanan, status koneksi, dan metrik yang relevan dengan kebutuhan operasional. Jenis pemeriksaan disesuaikan dengan perangkat, layanan, dan akses yang tersedia.' },
-      { title: 'Konfigurasi Pemantauan', content: 'Konfigurasi meliputi pendaftaran host, penentuan item atau pemeriksaan layanan, aturan pemicu peringatan, ambang batas, dan tampilan ringkasan pemantauan sesuai kebutuhan. SNMP, ICMP, serta notifikasi digunakan apabila didukung dan memang dikonfigurasi; penerapan masing-masing perlu dikonfirmasi pada lingkungan terkait.' },
-      { title: 'Penanganan Insiden', content: 'Penanganan diawali dengan identifikasi peringatan dan pemeriksaan kondisi perangkat atau layanan. Penelusuran gangguan mempertimbangkan konektivitas, kondisi sistem, dan informasi pemantauan. Setelah tindakan pemulihan, kondisi layanan dipantau kembali untuk menentukan apakah gangguan masih terjadi.' },
-      { title: 'Verifikasi', content: 'Pemeriksaan mencakup status host, pembaruan data, dan kesesuaian hasil pemeriksaan layanan. Apabila notifikasi diterapkan, alur pengirimannya perlu diuji sesuai aturan pemicu dan tujuan yang dikonfigurasi. Keberhasilan pengujian tidak diasumsikan tanpa bukti pemeriksaan.' },
-      { title: 'Hasil dan Manfaat', content: 'Pemantauan terpusat membantu menyediakan gambaran kondisi perangkat dan layanan serta mendukung identifikasi gangguan untuk tindak lanjut. Tidak ada klaim statistik ketersediaan layanan atau kecepatan deteksi yang belum terverifikasi.' },
+      { title: 'Konteks', content: 'Informasi ketersediaan perangkat dan layanan membantu menentukan kebutuhan pemeriksaan serta tindak lanjut operasional.' },
+      { title: 'Lingkup Teknis', content: 'Pemeriksaan host, ketersediaan layanan, latensi, serta ambang batas yang relevan. SNMP, ICMP, dan pengiriman notifikasi digunakan jika dikonfigurasi. Verifikasi meliputi pembaruan data pemantauan dan pengujian notifikasi apabila diterapkan.' },
+      { title: 'Manfaat Operasional', content: 'Pemantauan terpusat membantu menyediakan gambaran kondisi layanan dan data untuk penelusuran gangguan, tanpa mengklaim waktu deteksi atau pemulihan yang belum diukur.' },
     ],
   },
   virtualization: {
     title: 'Virtualisasi Server dan Pencadangan',
-    description: 'Pengelolaan lingkungan virtualisasi server dengan Proxmox VE untuk menata mesin virtual dan kebutuhan sumber daya dalam satu lingkungan administrasi.',
-    technology: 'Proxmox VE, mesin virtual, jaringan virtual, serta pencadangan dan pemulihan sesuai penerapan.',
+    description: 'Pengelolaan lingkungan virtualisasi Proxmox VE, mesin virtual, dan sumber daya server.',
+    technology: 'Proxmox VE, mesin virtual, jaringan virtual, pencadangan dan pemulihan sesuai penerapan.',
     sections: [
-      { title: 'Lingkup Pekerjaan', content: 'Mencakup pengelolaan host virtualisasi, mesin virtual, alokasi sumber daya, penyimpanan, dan jaringan virtual. Pencadangan menjadi bagian dari lingkup apabila mekanismenya telah diterapkan pada lingkungan terkait.' },
-      { title: 'Pendekatan Teknis', content: 'Pemeriksaan mencakup status host dan mesin virtual, penggunaan CPU, RAM, kapasitas penyimpanan, serta konfigurasi jaringan virtual. Pengelolaan dilakukan berdasarkan kebutuhan layanan dan kapasitas yang tersedia, termasuk pemeriksaan tugas pencadangan apabila digunakan.' },
-      { title: 'Pencadangan dan Pemulihan', content: 'Jadwal pencadangan, masa retensi, lokasi penyimpanan, serta riwayat pengujian pemulihan belum dikonfirmasi. Secara umum, pengaturannya perlu disesuaikan dengan kebutuhan layanan dan kapasitas penyimpanan. Pengujian pemulihan perlu dilakukan pada lingkungan yang sesuai sebelum cadangan dinyatakan dapat digunakan.' },
-      { title: 'Verifikasi', content: 'Verifikasi mencakup status mesin virtual, penggunaan sumber daya host, konektivitas jaringan virtual, dan akses layanan. Jika pencadangan diterapkan, status tugas serta ketersediaan berkas cadangan perlu diperiksa. Hasil pemulihan hanya dapat dinyatakan setelah pengujian dan pemeriksaan layanan dilakukan.' },
-      { title: 'Hasil dan Manfaat', content: 'Pengelolaan server secara terpusat membantu memudahkan administrasi mesin virtual dan pemantauan sumber daya. Pencadangan yang dikelola dan diuji dapat mendukung kesiapan pemulihan, tanpa mengasumsikan keberhasilan pemulihan atau waktu pemulihan tertentu.' },
+      { title: 'Konteks', content: 'Lingkungan virtualisasi memerlukan pengelolaan mesin virtual, kapasitas host, penyimpanan, dan konektivitas layanan.' },
+      { title: 'Lingkup Teknis', content: 'Pemeriksaan status host dan mesin virtual, alokasi CPU/RAM, kapasitas penyimpanan, dan jaringan virtual. Jadwal pencadangan, retensi, lokasi penyimpanan, serta riwayat pengujian pemulihan perlu dikonfirmasi; keberhasilan pemulihan tidak diasumsikan.' },
+      { title: 'Manfaat Operasional', content: 'Administrasi terpusat membantu menata mesin virtual dan sumber daya. Kebutuhan perangkat keras tetap bergantung pada kapasitas; kesiapan cadangan untuk pemulihan hanya dapat dipastikan setelah pengujian.' },
     ],
   },
   voip: {
     title: 'Pengelolaan Infrastruktur VoIP',
-    description: 'Pengelolaan dan pemeliharaan infrastruktur telepon berbasis IP untuk mendukung layanan komunikasi internal serta eksternal.',
-    technology: 'Asterisk, Issabel PBX, SIP, serta IVR dan antrean panggilan sesuai konfigurasi yang diterapkan.',
+    description: 'Menjaga layanan telepon berbasis IP tetap berjalan untuk komunikasi internal dan eksternal perusahaan.',
+    technology: 'Asterisk, Issabel PBX, SIP trunk; IVR dan antrean panggilan sesuai penerapan.',
     sections: [
-      { title: 'Lingkup Pekerjaan', content: 'Mencakup pengelolaan ekstensi, SIP trunk, perutean panggilan masuk dan keluar, registrasi perangkat telepon, serta penelusuran gangguan panggilan. IVR dan antrean panggilan termasuk dalam lingkup apabila digunakan pada sistem terkait.' },
-      { title: 'Pendekatan Teknis', content: 'Pemeriksaan mencakup status layanan PBX, konektivitas SIP, registrasi perangkat, alur panggilan, catatan kejadian sistem, serta konektivitas jaringan. Penyesuaian konfigurasi dilakukan berdasarkan hasil pemeriksaan dan kebutuhan komunikasi.' },
-      { title: 'Penelusuran Gangguan', content: 'Investigasi dapat mencakup panggilan gagal, audio satu arah, tidak adanya suara, penurunan kualitas audio, dan distribusi panggilan yang tidak sesuai. Pemeriksaan diarahkan pada registrasi SIP, perutean panggilan, NAT, firewall, kondisi jaringan, serta aturan antrean jika diterapkan.' },
-      { title: 'Verifikasi', content: 'Verifikasi dilakukan melalui pemeriksaan registrasi ekstensi, status layanan, serta pengujian panggilan masuk dan keluar sesuai lingkup pekerjaan. Jalur panggilan dan audio dua arah diperiksa; IVR serta distribusi antrean diuji apabila fitur tersebut digunakan. Hasil pengujian perlu dicatat sebelum layanan dinyatakan sesuai.' },
-      { title: 'Hasil dan Manfaat', content: 'Pendekatan ini mendukung pemeliharaan layanan komunikasi dan membantu penelusuran gangguan secara terarah. Tidak ada klaim peningkatan kualitas, keberhasilan panggilan, atau hasil operasional tertentu tanpa verifikasi.' },
+      { title: 'Konteks', content: 'Sistem IPPBX mendukung kebutuhan komunikasi internal dan eksternal melalui perangkat telepon berbasis IP.' },
+      { title: 'Lingkup Teknis', content: 'Pengelolaan ekstensi, SIP trunk, alur panggilan, dan penelusuran gangguan audio melalui pemeriksaan registrasi SIP, NAT/firewall, serta jaringan. Pemeriksaan IVR dan antrean disesuaikan dengan fitur yang digunakan. Verifikasi mencakup panggilan masuk/keluar dan audio dua arah.' },
+      { title: 'Manfaat Operasional', content: 'Pemeliharaan dan pemeriksaan yang terarah mendukung operasional komunikasi. Hasil kualitas audio serta distribusi panggilan perlu dibuktikan melalui pengujian sesuai konfigurasi.' },
     ],
   },
 };
@@ -67,15 +61,20 @@ const nav = document.querySelector('#main-nav');
 function closeMenu() {
   nav.classList.remove('is-open');
   menuButton.setAttribute('aria-expanded', 'false');
-  menuButton.setAttribute('aria-label', 'Buka menu');
+  menuButton.setAttribute('aria-label', t('Buka menu'));
 }
 menuButton.addEventListener('click', () => {
   const isOpen = nav.classList.toggle('is-open');
   menuButton.setAttribute('aria-expanded', String(isOpen));
-  menuButton.setAttribute('aria-label', isOpen ? 'Tutup menu' : 'Buka menu');
+  menuButton.setAttribute('aria-label', t(isOpen ? 'Tutup menu' : 'Buka menu'));
 });
 nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+    closeMenu();
+    menuButton.focus();
+  }
+});
 document.addEventListener('click', event => { if (!event.target.closest('.nav-wrap')) closeMenu(); });
 window.matchMedia('(min-width: 961px)').addEventListener('change', closeMenu);
 
@@ -104,9 +103,14 @@ updateActiveSection();
 /* 05. KONTAK — jangan membuat tautan seolah aktif sebelum datanya diisi. */
 const contacts = {
   email: { valid: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONFIG.email), url: `mailto:${CONFIG.email}`, label: CONFIG.email },
-  linkedin: { valid: /^https:\/\/(www\.)?linkedin\.com\/in\/[^\s]+$/i.test(CONFIG.linkedin), url: CONFIG.linkedin, label: 'Lihat profil LinkedIn' },
-  whatsapp: { valid: /^\d{8,15}$/.test(CONFIG.whatsapp), url: `https://wa.me/${CONFIG.whatsapp}`, label: `+${CONFIG.whatsapp}` },
+  linkedin: { valid: /^https:\/\/(www\.)?linkedin\.com\/in\/[^\s]+$/i.test(CONFIG.linkedin), url: CONFIG.linkedin, label: t('Lihat profil LinkedIn') },
+  whatsapp: { valid: /^\d{8,15}$/.test(CONFIG.whatsapp), url: `https://wa.me/${CONFIG.whatsapp}`, label: formatPhone(CONFIG.whatsapp) },
 };
+/* Tampilkan nomor dengan pemisah agar mudah dibaca; href tetap angka murni. */
+function formatPhone(digits) {
+  const m = digits.match(/^(62)(\d{3})(\d{4})(\d+)$/);
+  return m ? `+${m[1]} ${m[2]}-${m[3]}-${m[4]}` : `+${digits}`;
+}
 document.querySelectorAll('[data-contact]').forEach(link => {
   const contact = contacts[link.dataset.contact];
   if (contact.valid) {
@@ -129,29 +133,41 @@ cvLinks.forEach(link => {
   link.removeAttribute('aria-disabled');
   link.setAttribute('aria-describedby', 'cv-status');
 });
-document.querySelector('#cv-status').textContent = 'Buka CV A4, lalu pilih Cetak / Simpan sebagai PDF.';
+document.querySelector('#cv-status').textContent = t('Membuka CV format A4; simpan sebagai PDF melalui menu Cetak browser.');
 /* 07. DIALOG DETAIL — native dialog mendukung keyboard dan pengembalian fokus. */
 const dialog = document.querySelector('#project-dialog');
+let activeProject = null;
+function renderProject(key) {
+  const project = PROJECTS[key];
+  document.querySelector('#dialog-title').textContent = t(project.title);
+  document.querySelector('#dialog-description').textContent = t(project.description);
+  const details = document.querySelector('#dialog-sections');
+  details.replaceChildren();
+  project.sections.forEach(section => {
+    const heading = document.createElement('h3');
+    heading.textContent = t(section.title);
+    const paragraph = document.createElement('p');
+    paragraph.textContent = t(section.content);
+    details.append(heading, paragraph);
+  });
+  document.querySelector('#dialog-technology').textContent = t(project.technology);
+}
 document.querySelectorAll('[data-project]').forEach(button => {
   button.addEventListener('click', () => {
-    const project = PROJECTS[button.dataset.project];
-    document.querySelector('#dialog-title').textContent = project.title;
-    document.querySelector('#dialog-description').textContent = project.description;
-    // Buat konten sebagai teks agar perubahan data tidak menyisipkan HTML.
-    const details = document.querySelector('#dialog-sections');
-    details.replaceChildren();
-    project.sections.forEach(section => {
-      const heading = document.createElement('h3');
-      heading.textContent = section.title;
-      const paragraph = document.createElement('p');
-      paragraph.textContent = section.content;
-      details.append(heading, paragraph);
-    });
-    document.querySelector('#dialog-technology').textContent = project.technology;
+    activeProject = button.dataset.project;
+    renderProject(activeProject);
     dialog.scrollTop = 0;
     dialog.showModal();
+    document.body.classList.add('dialog-open');
   });
 });
+document.addEventListener('languagechange', () => {
+  if (activeProject && dialog.open) renderProject(activeProject);
+  document.querySelector('#cv-status').textContent = t('Membuka CV format A4; simpan sebagai PDF melalui menu Cetak browser.');
+  const linkedin = document.querySelector('[data-contact="linkedin"] small');
+  if (linkedin && contacts.linkedin.valid) linkedin.textContent = t('Lihat profil LinkedIn');
+});
+dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
 dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => {
   const box = dialog.getBoundingClientRect();

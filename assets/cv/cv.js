@@ -1,6 +1,7 @@
 /* Buka dialog cetak bawaan browser. Tidak ada fetch, CDN, atau layanan eksternal.
-   Judul CV_Sandrian menjadi saran nama PDF; nama akhir tetap dipilih pengguna. */
+   Bahasa aktif menentukan saran nama PDF; nama akhir dipilih pengguna. */
 document.querySelector('#print-cv').addEventListener('click', () => {
-  document.title = 'CV_Sandrian';
+  const language = window.I18N ? window.I18N.language : 'id';
+  document.title = `CV_Sandrian_${language.toUpperCase()}`;
   window.print();
 });

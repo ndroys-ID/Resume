@@ -17,7 +17,8 @@
     if (meta) meta.content = dark ? '#222930' : '#203c53';
     const button = document.querySelector('#theme-toggle');
     if (button) {
-      const label = dark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap';
+      const key = dark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap';
+      const label = window.I18N ? window.I18N.t(key) : key;
       button.setAttribute('aria-label', label);
       button.setAttribute('title', label);
       button.setAttribute('aria-pressed', String(dark));
