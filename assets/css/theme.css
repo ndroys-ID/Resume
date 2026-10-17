@@ -18,6 +18,7 @@
   --badge: #e1e9e3;
   --badge-ink: #4b6b5b;
   --overlay: #152d40aa;
+  --skill-hover-shadow: 0 10px 24px #203c5314, 0 3px 8px #203c530a;
 }
 /* DARK_PALETTE */
 :root[data-theme="dark"] {
@@ -46,6 +47,7 @@
   --badge: #354b4d;
   --badge-ink: #d5e9e2;
   --overlay: #16202bcc;
+  --skill-hover-shadow: 0 12px 28px #111b2b55, 0 3px 10px #111b2b33;
 }
 /* Preferensi sistem tetap dihormati jika JavaScript tidak berjalan. */
 @media (prefers-color-scheme: dark) {
@@ -75,13 +77,32 @@
   --badge: #354b4d;
   --badge-ink: #d5e9e2;
   --overlay: #16202bcc;
+  --skill-hover-shadow: 0 12px 28px #111b2b55, 0 3px 10px #111b2b33;
 
   }
 }
 
 /* Komponen: gunakan token, bukan filter/inversi pada halaman atau foto. */
 .site-header { background: var(--header); }
-.skill-card { background: var(--surface); }
+.skill-card {
+  background: var(--surface);
+}
+.skill-card, .project-card {
+  transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+}
+/* Hanya perangkat dengan mouse: transform tidak mengubah ukuran atau alur grid. */
+@media (hover: hover) and (pointer: fine) {
+  .skill-card:hover, .project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: var(--skill-hover-shadow);
+  }
+}
+/* Highlight tetap tersedia, tetapi tanpa pergerakan untuk reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .skill-card, .project-card { transition: none; }
+  .skill-card:hover, .project-card:hover { transform: none; }
+}
 .button,.skip-link { color: var(--button-ink); }
 .button:hover { background: var(--button-hover); }
 .brand { background: var(--navy); color: var(--button-ink); }

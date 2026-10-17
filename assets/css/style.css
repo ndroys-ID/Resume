@@ -78,7 +78,31 @@ footer{flex-wrap:wrap}
   dialog{padding:34px 24px 24px}
 }
 
-/* 10. PENYEMPURNAAN UI/UX — timeline sejajar, dialog, dan ruang heading. */
+/* 10. LABEL KEAHLIAN — alur alami, tanpa ruang judul atau tinggi chip paksa. */
+.skills-grid > .skill-card { min-width: 0; }
+.skills-grid .skill-card h3 {
+  margin: 16px 0;
+}
+.skills-grid .tags {
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 7px;
+}
+.skills-grid .tags > span {
+  display: block;
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: 100%;
+  padding: 5px 9px;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal; /* Label pindah baris pada spasi, bukan di tengah kata. */
+}
+
+/* 11. PENYEMPURNAAN UI/UX — timeline sejajar, dialog, dan ruang heading. */
 /* Label kedua entri timeline memakai komponen yang sama agar jarak ke tanggal identik. */
 .current-label-muted{background:transparent;color:var(--muted);border:1px solid var(--line)}
 /* Heading tanpa <br>: biarkan lebar yang memutus baris. */
